@@ -15,7 +15,7 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-	ypos++;
+	ypos+=2;
 
 	srcRect.h = 32;
 	srcRect.w = 32;
