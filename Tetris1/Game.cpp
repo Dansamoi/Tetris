@@ -1,5 +1,8 @@
-#include "Game.hpp"
-#include <iostream>
+#include "Game.h"
+#include "TextureManager.h"
+#include "GameObject.h"
+
+GameObject* block;
 
 using namespace std;
 
@@ -41,6 +44,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
+
+	block = new GameObject("assets/block.png", renderer, 0, 0);
 }
 
 void Game::handleEvents()
@@ -59,14 +64,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	cnt++;
-	cout << cnt << endl;
+	block->Update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	//this is where we would add stuff to render
+	block->Render();
 	SDL_RenderPresent(renderer);
 }
 
