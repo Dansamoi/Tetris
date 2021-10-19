@@ -24,6 +24,7 @@ public:
 	~Shape();
 	void Update();
 	void Render();
+	void Move(int side);//1 - right, -1 - left
 private:
 	vector<GameObject*> blocks;
 

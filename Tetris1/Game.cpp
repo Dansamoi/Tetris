@@ -4,6 +4,7 @@
 #include "Shape.h"
 
 Shape* shape;
+SDL_Event Game::event;
 
 using namespace std;
 
@@ -45,12 +46,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-	shape = new Shape(renderer, 0, 0, OSHAPE);
+	shape = new Shape(renderer, 0, 0, LSHAPE);
 }
 
 void Game::handleEvents()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 	switch (event.type) {
 	case SDL_QUIT:

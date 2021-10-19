@@ -20,6 +20,8 @@ public:
 	void render();
 	void clean();
 
+	static SDL_Event event;
+
 	bool running() { return isRunning; };
 
 };

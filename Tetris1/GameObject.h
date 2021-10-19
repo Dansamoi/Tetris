@@ -8,9 +8,8 @@ public:
 
 	void Update();
 	void Render();
-
-private:
 	int xpos;
+private:
 	int ypos;
 	int r, g, b;
 	SDL_Texture* objTexture;

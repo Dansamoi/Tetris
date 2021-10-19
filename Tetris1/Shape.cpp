@@ -49,10 +49,6 @@ Shape::Shape(SDL_Renderer* ren, int xPos, int yPos, Type type)
 	default:
 		break;
 	}
-
-	for (auto block : blocks) {
-		
-	}
 }
 
 Shape::~Shape()
@@ -61,6 +57,21 @@ Shape::~Shape()
 
 void Shape::Update()
 {
+	if (Game::event.type == SDL_KEYDOWN) {
+		switch (Game::event.key.keysym.sym) {
+		case SDLK_d:
+			Move(1);
+			break;
+		case SDLK_a:
+			Move(-1);
+			break;
+		default:
+			break;
+		}
+	}
+	if (Game::event.type == SDL_KEYUP) {
+
+	}
 	for (auto block : blocks) {
 		block->Update();
 	}
@@ -70,5 +81,12 @@ void Shape::Render()
 {
 	for (auto block : blocks) {
 		block->Render();
+	}
+}
+
+void Shape::Move(int side)
+{
+	for (auto block : blocks) {
+		block->xpos += 64 * side;
 	}
 }
