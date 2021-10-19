@@ -1,8 +1,9 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "Shape.h"
 
-GameObject* block;
+Shape* shape;
 
 using namespace std;
 
@@ -35,7 +36,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			cout << "Renderer created!" << endl;
 		}
 
@@ -44,8 +45,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-
-	block = new GameObject("assets/block.png", renderer, 0, 0);
+	shape = new Shape(renderer, 0, 0, OSHAPE);
 }
 
 void Game::handleEvents()
@@ -64,14 +64,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	block->Update();
+	shape->Update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	//this is where we would add stuff to render
-	block->Render();
+	shape->Render();
 	SDL_RenderPresent(renderer);
 }
 
