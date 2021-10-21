@@ -8,9 +8,9 @@ public:
 
 	void Update();
 	void Render();
-	int xpos;
+	int xpos, ypos;
+	int speed = 2;
 private:
-	int ypos;
 	int r, g, b;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;

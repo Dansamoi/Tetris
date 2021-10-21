@@ -46,7 +46,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-	shape = new Shape(renderer, 0, 0, LSHAPE);
+	shape = new Shape(renderer, (LEFT_BORDER + RIGHT_BORDER) / 2 -  B_SIZE, 0, Type(rand() % 7));
 }
 
 void Game::handleEvents()
@@ -64,7 +64,10 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	shape->Update();
+	if(!shape->Colide()) shape->Update();
+	else {
+		shape = new Shape(renderer, (LEFT_BORDER + RIGHT_BORDER) /2 -  B_SIZE, 0, Type(rand() % 7));
+	}
 }
 
 void Game::render()
