@@ -1,8 +1,6 @@
 #pragma once
-#include "SDL.h"
-#include <vector>
+#include "Data.h"
 #include "GameObject.h"
-#include "Game.h"
 
 using namespace std;
 
@@ -41,8 +39,6 @@ public:
 	Type type;
 	int xPos;
 	int yPos;
-private:
 	vector<GameObject*> blocks;
-
 };
 

@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "Game.h"
 
 Shape::Shape(SDL_Renderer* ren, int xPos, int yPos, Type type)
 {
@@ -124,7 +125,7 @@ void Shape::Move(int side)
 
 bool Shape::Colide() {
 	for (auto block : blocks) {
-		if (block->ypos >= HEIGHT - B_SIZE) return true;
+		if (block->ypos >= Game::map.Top(block->xpos) - B_SIZE) return true;
 	}
 
 	return false;

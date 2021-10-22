@@ -2,11 +2,11 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Shape.h"
+#include "Map.h"
 
 Shape* shape;
 SDL_Event Game::event;
-
-using namespace std;
+Map Game::map = Map();
 
 Game::Game()
 {
@@ -66,7 +66,9 @@ void Game::update()
 {
 	if(!shape->Colide()) shape->Update();
 	else {
+		map.Add(shape);
 		shape = new Shape(renderer, (LEFT_BORDER + RIGHT_BORDER) /2 -  B_SIZE, 0, Type(rand() % 7));
+		map.Debug();
 	}
 }
 

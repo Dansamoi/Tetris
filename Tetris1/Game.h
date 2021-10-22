@@ -1,12 +1,6 @@
 #pragma once
-#define WIDTH 1280
-#define HEIGHT 800
-#define LEFT_BORDER 480
-#define RIGHT_BORDER 800
-#define B_SIZE 32
-#include "SDL.h"
-#include "SDL_image.h"
-#include <iostream>
+#include "Data.h"
+#include "Map.h"
 
 class Game
 {
@@ -26,6 +20,7 @@ public:
 	void clean();
 
 	static SDL_Event event;
+	static Map map;
 
 	bool running() { return isRunning; };
 

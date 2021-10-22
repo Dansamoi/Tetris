@@ -1,5 +1,5 @@
-#include <SDL.h>
-#include <iostream>
+#pragma once
+#include "Data.h"
 #include "Game.h"
 
 Game* game = nullptr;
