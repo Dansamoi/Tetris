@@ -7,7 +7,6 @@ class Game
 private:
 	bool isRunning;
 	SDL_Window* window;
-	SDL_Renderer* renderer;
 public:
 	Game();
 	~Game();
@@ -21,6 +20,7 @@ public:
 
 	static SDL_Event event;
 	static Map map;
+	static SDL_Renderer* renderer;
 
 	bool running() { return isRunning; };
 

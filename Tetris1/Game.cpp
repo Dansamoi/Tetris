@@ -1,12 +1,11 @@
 #include "Game.h"
-#include "TextureManager.h"
 #include "GameObject.h"
 #include "Shape.h"
-#include "Map.h"
 
 Shape* shape;
 SDL_Event Game::event;
 Map Game::map = Map();
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
 {
@@ -46,7 +45,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-	shape = new Shape(renderer, (LEFT_BORDER + RIGHT_BORDER) / 2 -  B_SIZE, 0, Type(rand() % 7));
+	shape = new Shape((LEFT_BORDER + RIGHT_BORDER) / 2 -  B_SIZE, 0, Type(rand() % 7));
 }
 
 void Game::handleEvents()
@@ -64,18 +63,22 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	if(!shape->Colide()) shape->Update();
+	if (!shape->Colide()) shape->Update();
 	else {
 		map.Add(shape);
-		shape = new Shape(renderer, (LEFT_BORDER + RIGHT_BORDER) /2 -  B_SIZE, 0, Type(rand() % 7));
+		delete shape;
+		map.fullRowCheck();
+		shape = new Shape((LEFT_BORDER + RIGHT_BORDER) /2 -  B_SIZE, 0, Type(rand() % 7));
 		map.Debug();
 	}
+	
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	//this is where we would add stuff to render
+	map.DrawMap();
 	shape->Render();
 	SDL_RenderPresent(renderer);
 }

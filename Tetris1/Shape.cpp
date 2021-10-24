@@ -1,7 +1,7 @@
 #include "Shape.h"
 #include "Game.h"
 
-Shape::Shape(SDL_Renderer* ren, int xPos, int yPos, Type type)
+Shape::Shape(int xPos, int yPos, Type type)
 {
 	this->type = type;
 	this->xPos = xPos;
@@ -48,13 +48,16 @@ Shape::Shape(SDL_Renderer* ren, int xPos, int yPos, Type type)
 		break;
 	}
 	for (int i = 0; i < 4; i++) {
-		blocks.push_back(new GameObject("assets/block.png", ren, xPos, yPos, r, g, b));
+		blocks.push_back(new GameObject("assets/block.png", xPos, yPos, r, g, b));
 	}
 	Rotate();
 }
 
 Shape::~Shape()
 {
+	for (auto block : blocks) {
+		delete block;
+	}
 }
 
 bool Shape::isTouchLeft() {

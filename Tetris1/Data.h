@@ -8,5 +8,17 @@
 #include <vector>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "TextureManager.h"
 
 using namespace std;
+
+enum Type {
+	LSHAPE,
+	JSHAPE,
+	OSHAPE,
+	ISHAPE,
+	SSHAPE,
+	TSHAPE,
+	ZSHAPE
+
+};

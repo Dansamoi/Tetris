@@ -4,17 +4,6 @@
 
 using namespace std;
 
-enum Type {
-	LSHAPE,
-	JSHAPE,
-	OSHAPE,
-	ISHAPE,
-	SSHAPE,
-	TSHAPE,
-	ZSHAPE
-
-};
-
 enum Rotation {
 	R1,
 	R2,
@@ -26,7 +15,7 @@ enum Rotation {
 class Shape
 {
 public:
-	Shape(SDL_Renderer* ren, int xPos, int yPos, Type type);
+	Shape(int xPos, int yPos, Type type);
 	~Shape();
 	bool isTouchLeft();
 	bool isTouchRight();
