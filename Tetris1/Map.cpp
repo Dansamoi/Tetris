@@ -4,14 +4,22 @@
 Map::Map()
 {
 	for (int i = 0; i < 10; i++) {
+		vector<SDL_Texture*> texCol;
+
+		for (int j = 0; j < 25; j++) {
+			texCol.push_back(TextureManager::Loadtexture("block.png", 255, 255, 255));
+		}
+		mapTexture.push_back(texCol);
+	}
+
+	for (int i = 0; i < 10; i++) {
 		vector<int> column;
 
-		for (int i = 0; i < 25; i++) {
+		for (int j = 0; j < 25; j++) {
 			column.push_back(0);
 		}
 		theMap.push_back(column);
 	}
-	blockTex = TextureManager::Loadtexture("block.png", 255, 255, 255);
 	sidesTex = TextureManager::Loadtexture("block.png", 255, 255, 255);
 	src.h = B_SIZE;
 	src.w = B_SIZE;
@@ -92,6 +100,13 @@ void Map::fullRowCheck() {
 
 void Map::DrawMap()
 {
+	
+	for (auto v : mapTexture) {
+		for (auto tex : v) {
+			SDL_DestroyTexture(tex);
+		}
+	}
+
 	int r = 255, g = 255, b = 255;
 	for (int col = 0; col < 10; col++) {
 		for (int row = 0; row < 25; row++) {
@@ -141,8 +156,8 @@ void Map::DrawMap()
 				b = 50;
 				break;
 			}
-			blockTex = TextureManager::Loadtexture("assets/block.png", r, g, b);
-			TextureManager::Draw(blockTex, src, dest);
+			mapTexture[col][row] = TextureManager::Loadtexture("assets/block.png", r, g, b);
+			TextureManager::Draw(mapTexture[col][row], src, dest);
 
 		}
 	}

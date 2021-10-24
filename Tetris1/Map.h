@@ -18,8 +18,8 @@ public:
 	int Top(int x);
 private:
 	vector<vector<int>> theMap;
+	vector<vector<SDL_Texture*>> mapTexture;
 	SDL_Rect src, dest;
-	SDL_Texture* blockTex;
 	SDL_Texture* sidesTex;
 
 };

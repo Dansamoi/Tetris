@@ -3,6 +3,7 @@
 GameObject::GameObject(const char* textureSheet, int x, int y, int r, int g, int b)
 {
 	objTexture = TextureManager::Loadtexture(textureSheet, r, g, b);
+	cout << objTexture;
 
 	xpos = x;
 	ypos = y;
