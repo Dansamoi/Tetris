@@ -19,6 +19,7 @@ enum Type {
 	ISHAPE,
 	SSHAPE,
 	TSHAPE,
-	ZSHAPE
-
+	ZSHAPE,
+	NOTYPE
 };
+

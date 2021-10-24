@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.h"
+#include "Game.h"
 
 Map::Map()
 {
@@ -112,51 +113,11 @@ void Map::DrawMap()
 		for (int row = 0; row < 25; row++) {
 			dest.x = LEFT_BORDER + col * B_SIZE;
 			dest.y = row * B_SIZE;
-
-			switch (theMap[col][row]) {
-			case 1:
-				r = 255;
-				g = 150;
-				b = 0;
-				break;
-			case 2:
-				r = 0;
-				g = 0;
-				b = 255;
-				break;
-			case 3:
-				r = 255;
-				g = 255;
-				b = 0;
-				break;
-			case 4:
-				r = 0;
-				g = 200;
-				b = 255;
-				break;
-			case 5:
-				r = 0;
-				g = 255;
-				b = 0;
-				break;
-			case 6:
-				r = 255;
-				g = 0;
-				b = 255;
-				break;
-			case 7:
-				r = 255;
-				g = 0;
-				b = 0;
-				break;
-
-			default:
-				r = 50;
-				g = 50;
-				b = 50;
-				break;
-			}
-			mapTexture[col][row] = TextureManager::Loadtexture("assets/block.png", r, g, b);
+			int type = theMap[col][row];
+			if (!type) type = 7;
+			else type -= 1;
+			
+			mapTexture[col][row] = TextureManager::Loadtexture("assets/block.png", Game::rgb[type][0], Game::rgb[type][1], Game::rgb[type][2]);
 			TextureManager::Draw(mapTexture[col][row], src, dest);
 
 		}

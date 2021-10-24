@@ -6,6 +6,16 @@ Shape* shape;
 SDL_Event Game::event;
 Map Game::map = Map();
 SDL_Renderer* Game::renderer = nullptr;
+int Game::rgb[8][3] = {
+		{255,150,0},
+		{0,0,255},
+		{255,255,0},
+		{0,200,255},
+		{0,255,0},
+		{255,0,255},
+		{255,0,0},
+		{50,50,50}
+};
 
 Game::Game()
 {

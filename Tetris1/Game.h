@@ -23,6 +23,6 @@ public:
 	static SDL_Renderer* renderer;
 
 	bool running() { return isRunning; };
-
+	static int rgb[8][3];
 };
 

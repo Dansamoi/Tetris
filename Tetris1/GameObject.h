@@ -3,7 +3,7 @@
 class GameObject
 {
 public:
-	GameObject(const char* textureSheet, int x, int y, int r, int g, int b);
+	GameObject(const char* textureSheet, int x, int y, Type type);
 	~GameObject();
 
 	void Update();

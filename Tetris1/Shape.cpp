@@ -6,49 +6,8 @@ Shape::Shape(int xPos, int yPos, Type type)
 	this->type = type;
 	this->xPos = xPos;
 	this->yPos = yPos;
-	int r, g, b;
-	switch (type) {
-	case LSHAPE:
-		r = 255;
-		g = 150;
-		b = 0;
-		break;
-	case JSHAPE:
-		r = 0;
-		g = 0;
-		b = 255;
-		break;
-	case OSHAPE:
-		r = 255;
-		g = 255;
-		b = 0;
-		break;
-	case ISHAPE:
-		r = 0;
-		g = 200;
-		b = 255;
-		break;
-	case SSHAPE:
-		r = 0;
-		g = 255;
-		b = 0;
-		break;
-	case TSHAPE:
-		r = 255;
-		g = 0;
-		b = 255;
-		break;
-	case ZSHAPE:
-		r = 255;
-		g = 0;
-		b = 0;
-		break;
-
-	default:
-		break;
-	}
 	for (int i = 0; i < 4; i++) {
-		blocks.push_back(new GameObject("assets/block.png", xPos, yPos, r, g, b));
+		blocks.push_back(new GameObject("assets/block.png", xPos, yPos, type));
 	}
 	Rotate();
 }

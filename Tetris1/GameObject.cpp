@@ -1,9 +1,8 @@
 #include "GameObject.h"
 #include "Game.h"
-GameObject::GameObject(const char* textureSheet, int x, int y, int r, int g, int b)
+GameObject::GameObject(const char* textureSheet, int x, int y, Type type)
 {
-	objTexture = TextureManager::Loadtexture(textureSheet, r, g, b);
-	cout << objTexture;
+	objTexture = TextureManager::Loadtexture(textureSheet, Game::rgb[type][0], Game::rgb[type][1], Game::rgb[type][2]);
 
 	xpos = x;
 	ypos = y;
@@ -11,6 +10,7 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int r, int g, int
 
 GameObject::~GameObject()
 {
+	SDL_DestroyTexture(objTexture);
 }
 
 void GameObject::Update()
