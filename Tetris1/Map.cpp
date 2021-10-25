@@ -96,6 +96,14 @@ Map::~Map()
 {
 }
 
+void Map::CleanRow(int theRow) {
+	for (int col = 0; col < 10; col++) {
+		for (int row = theRow; row > 1; row--) {
+			theMap[col][row] = theMap[col][row - 1];
+		}
+	}
+}
+
 void Map::fullRowCheck() {
 	bool full = true;
 	int theRow = 0;
@@ -107,15 +115,7 @@ void Map::fullRowCheck() {
 				full = false;
 			}
 		}
-		if (full) break;
-	}
-
-	if (full) {
-		for (int col = 0; col < 10; col++) {
-			for (int row = theRow; row > 1; row--) {
-				theMap[col][row] = theMap[col][row - 1];
-			}
-		}
+		if (full) CleanRow(row);
 	}
 }
 

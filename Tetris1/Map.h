@@ -9,6 +9,7 @@ class Map
 public:
 	Map();
 	~Map();
+	void CleanRow(int theRow);
 	void fullRowCheck();
 	void DrawMap();
 
