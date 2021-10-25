@@ -8,7 +8,7 @@ Map::Map()
 		vector<SDL_Texture*> texCol;
 
 		for (int j = 0; j < 25; j++) {
-			texCol.push_back(TextureManager::Loadtexture("assets/block.png", 255, 255, 255));
+			texCol.push_back(0);
 		}
 		mapTexture.push_back(texCol);
 	}
@@ -55,13 +55,6 @@ void Map::Debug()
 	}
 	cout << endl;
 }
-
-/*
-void Map::Render(Shape* s, SDL_Renderer* ren, int r, int g, int b)
-{
-	SDL_Texture* tex = TextureManager::Loadtexture("block.png", ren, r, g, b);
-}
-*/
 
 int Map::Top(int x, int y)
 {
