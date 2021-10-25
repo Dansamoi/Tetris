@@ -21,14 +21,14 @@ Shape::~Shape()
 
 bool Shape::isTouchLeft() {
 	for (auto block : blocks) {
-		if (block->xpos <= LEFT_BORDER) return true;
+		if (block->xpos <= Game::map.Sides(block->xpos, block->ypos, -1)) return true;
 	}
 	return false;
 }
 
 bool Shape::isTouchRight() {
 	for (auto block : blocks) {
-		if (block->xpos >= RIGHT_BORDER - B_SIZE) return true;
+		if (block->xpos >= Game::map.Sides(block->xpos, block->ypos, 1) - B_SIZE) return true;
 	}
 	return false;
 }
@@ -87,7 +87,7 @@ void Shape::Move(int side)
 
 bool Shape::Colide() {
 	for (auto block : blocks) {
-		if (block->ypos >= Game::map.Top(block->xpos) - B_SIZE) return true;
+		if (block->ypos >= Game::map.Top(block->xpos, block->ypos) - B_SIZE) return true;
 	}
 
 	return false;
@@ -405,14 +405,14 @@ void Shape::Rotate()
 			break;
 		}
 	}
-	Move(1);
+	//Move(1);
 	while (isTouchLeft()) {
 		Move(1);
 	}
-	Move(-1);
-	Move(-1);
+	//Move(-1);
+	//Move(-1);
 	while (isTouchRight()) {
 		Move(-1);
 	}
-	Move(1);
+	//Move(1);
 }

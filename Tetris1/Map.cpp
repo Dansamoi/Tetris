@@ -8,7 +8,7 @@ Map::Map()
 		vector<SDL_Texture*> texCol;
 
 		for (int j = 0; j < 25; j++) {
-			texCol.push_back(TextureManager::Loadtexture("block.png", 255, 255, 255));
+			texCol.push_back(TextureManager::Loadtexture("assets/block.png", 255, 255, 255));
 		}
 		mapTexture.push_back(texCol);
 	}
@@ -63,13 +63,33 @@ void Map::Render(Shape* s, SDL_Renderer* ren, int r, int g, int b)
 }
 */
 
-int Map::Top(int x)
+int Map::Top(int x, int y)
 {
+	y = y / B_SIZE;
 	vector<int> column = theMap[(int)((x - LEFT_BORDER) / B_SIZE)];
-	for (int i = 0; i < column.size(); i++) {
+	for (int i = y; i < column.size(); i++) {
 		if (column[i]) return i * B_SIZE;
 	}
 	return HEIGHT;
+}
+
+int Map::Sides(int x, int y, int side)
+{
+	x = (x - LEFT_BORDER) / B_SIZE;
+	y = y / B_SIZE;
+
+	if (side == 1) {
+		for (int col = x + 1; col < 10; col++) {
+			if (theMap[col][y]) return col * B_SIZE + LEFT_BORDER;
+		}
+		return RIGHT_BORDER;
+	}
+	else {
+		for (int col = x - 1; col >= 0; col--) {
+			if (theMap[col][y]) return col * B_SIZE + LEFT_BORDER + B_SIZE;
+		}
+		return LEFT_BORDER;
+	}
 }
 
 Map::~Map()

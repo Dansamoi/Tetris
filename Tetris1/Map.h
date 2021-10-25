@@ -15,7 +15,8 @@ public:
 	void Add(Shape* s);
 	void Debug();
 	//void Render(Shape* s, int r, int g, int b);
-	int Top(int x);
+	int Top(int x, int y);
+	int Sides(int x, int y, int side);
 private:
 	vector<vector<int>> theMap;
 	vector<vector<SDL_Texture*>> mapTexture;
